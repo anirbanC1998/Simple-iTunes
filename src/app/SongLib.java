@@ -10,6 +10,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import view.ListController;
 
 /**
  *
@@ -19,7 +20,18 @@ public class SongLib extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("/view/List.fxml"));
+//        Parent root = FXMLLoader.load(getClass().getResource("/view/List.fxml"));
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("/view/List.fxml"));
+        Parent root = (Parent)loader.load();
+        
+        //set csv directory and load songs
+        SongLibrary.setFilePath("src/app/songLibrary.csv");
+        SongLibrary.loadSongs();
+        
+        //populate songs to obs list
+        ListController listController = loader.getController();
+        listController.start(stage);
         
         Scene scene = new Scene(root);
         
@@ -32,6 +44,13 @@ public class SongLib extends Application {
      */
     public static void main(String[] args) {
         launch(args);
+    }
+
+    @Override
+    public void stop() throws Exception {
+//        super.stop();
+        SongLibrary.saveToFile();
+        System.out.println("Saving & Exiting...");
     }
     
 }
