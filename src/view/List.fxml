@@ -1,18 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.control.ListView?>
 
-<AnchorPane 
-	xmlns:fx="http://javafx.com/fxml/1"
-	fx:controller="view.ListController">
-	
-	<ListView fx:id="listView"
-      	prefHeight="200.0" 
-      	prefWidth="200.0" 
-      	AnchorPane.bottomAnchor="10.0" 
-      	AnchorPane.leftAnchor="10.0" 
-      	AnchorPane.rightAnchor="10.0" 
-      	AnchorPane.topAnchor="10.0" />
-      	
+<AnchorPane id="AnchorPane" prefHeight="600" prefWidth="600" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.ListController">
+    <children>
+        <ListView layoutX="10" layoutY="20" prefHeight="280" prefWidth="580" fx:id="listView" />
+        <Label layoutX="250" layoutY="0" minHeight="20" minWidth="70" fx:id="songLibraryLabel" />
+        <Label layoutX="105" layoutY="325" minHeight="20" minWidth="70" fx:id="newSongLabel" />
+        <Label layoutX="380" layoutY="325" minHeight="20" minWidth="70" fx:id="selectedSongLabel" />
+        
+        <Label layoutX="25" layoutY="360" minHeight="20" minWidth="70" text="Name:" />
+        <Label layoutX="25" layoutY="410" minHeight="20" minWidth="70" text="Artist:" />
+        <Label layoutX="25" layoutY="460" minHeight="20" minWidth="70" text="Album:" />
+        <Label layoutX="25" layoutY="510" minHeight="20" minWidth="70" text="Year:" />
+        
+        <TextField layoutX="75" layoutY="357" minHeight="20" minWidth="200" alignment="CENTER" promptText="Enter Name" fx:id="newName"/>
+        <TextField layoutX="75" layoutY="407" minHeight="20" minWidth="200" alignment="CENTER" promptText="Enter Artist" fx:id="newArtist"/>
+        <TextField layoutX="75" layoutY="457" minHeight="20" minWidth="200" alignment="CENTER" promptText="Enter Album (optional)" fx:id="newAlbum"/>
+        <TextField layoutX="75" layoutY="507" minHeight="20" minWidth="200" alignment="CENTER" promptText="Enter Year (optional)" fx:id="newYear"/>
+        
+        <Label layoutX="310" layoutY="360" minHeight="20" minWidth="70" text="Name:" />
+        <Label layoutX="310" layoutY="410" minHeight="20" minWidth="70" text="Artist:" />
+        <Label layoutX="310" layoutY="460" minHeight="20" minWidth="70" text="Album:" />
+        <Label layoutX="310" layoutY="510" minHeight="20" minWidth="70" text="Year:" />
+        
+        <TextField layoutX="360" layoutY="357" minHeight="20" minWidth="215" fx:id="selectedName"/>
+        <TextField layoutX="360" layoutY="407" minHeight="20" minWidth="215" fx:id="selectedArtist"/>
+        <TextField layoutX="360" layoutY="457" minHeight="20" minWidth="215" fx:id="selectedAlbum"/>
+        <TextField layoutX="360" layoutY="507" minHeight="20" minWidth="215" fx:id="selectedYear"/>
+        
+        <Button layoutX="150" layoutY="550" minHeight="25" minWidth="50" text="Add" onAction="#handleAdd" fx:id="btn_add" />
+        <Button layoutX="410" layoutY="550" minHeight="25" minWidth="50" text="Edit" onAction="#handleEdit" fx:id="btn_edit" />
+        <Button layoutX="480" layoutY="550" minHeight="25" minWidth="50" text="Delete" onAction="#handleDelete" fx:id="btn_delete" />
+    </children>
 </AnchorPane>
